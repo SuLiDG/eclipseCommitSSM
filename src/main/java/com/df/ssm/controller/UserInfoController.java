@@ -59,5 +59,6 @@ public class UserInfoController {
 		userInfoService.update(userInfo);
 		return R.ok();
 	}
+	
 }
 
