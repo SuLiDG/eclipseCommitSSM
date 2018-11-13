@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+	<context id="context1">
+		<commentGenerator>
+			<property name="suppressDate" value="true"/>
+			<!-- 关闭注释 -->
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+
+		<jdbcConnection 
+			connectionURL="jdbc:mysql://192.168.10.33:3306/demo"
+			driverClass="com.mysql.jdbc.Driver"
+			password="demo1033" 
+			userId="demo" />
+			
+		<javaModelGenerator 
+			targetPackage="com.df.ssm.entity" 
+			targetProject="src/main/java" />
+			
+		<sqlMapGenerator 
+			targetPackage="com.df.ssm.mapper.xml"
+			targetProject="src/main/java" />
+		<javaClientGenerator 
+			targetPackage="com.df.ssm.mapper"
+			targetProject="src/main/java" 
+			type="XMLMAPPER" />
+
+		<!-- 下面添加需要自动生成MyBatis代码的表 -->
+		<!-- 
+		<table schema="" tableName="news" domainObjectName="News" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+		 -->
+		<table schema="" tableName="%" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"/>
+	</context>
+</generatorConfiguration>

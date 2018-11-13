@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.df.ssm.mapper.UserInfoMapper">
+	<resultMap id="BaseResultMap" type="com.df.ssm.entity.UserInfo">
+		<id column="ID" jdbcType="BIGINT" property="id" />
+		<result column="ROLE_ID" jdbcType="INTEGER" property="roleId" />
+		<result column="NAME" jdbcType="VARCHAR" property="name" />
+		<result column="PWD" jdbcType="VARCHAR" property="pwd" />
+		<result column="REAL_NAME" jdbcType="VARCHAR" property="realName" />
+		<result column="QQ" jdbcType="VARCHAR" property="qq" />
+		<result column="SEX" jdbcType="BIT" property="sex" />
+		<result column="BIRTHDATE" jdbcType="DATE" property="birthdate" />
+		<result column="CARD_ID" jdbcType="VARCHAR" property="cardId" />
+		<result column="TEL" jdbcType="VARCHAR" property="tel" />
+		<result column="EMAIL" jdbcType="VARCHAR" property="email" />
+		<result column="ADDRESS" jdbcType="VARCHAR" property="address" />
+		<result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<resultMap id="BaseResultMap1" extends="BaseResultMap"
+		type="com.df.ssm.vo.UserInfoVO">
+		<result column="ROLE_NAME" jdbcType="VARCHAR" property="roleName" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		ID, ROLE_ID, NAME, PWD, REAL_NAME, QQ, SEX, BIRTHDATE, CARD_ID, TEL,
+		EMAIL, ADDRESS,
+		CREATE_TIME
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from USER_INFO
+		where ID = #{id,jdbcType=BIGINT}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		delete from USER_INFO
+		where ID = #{id,jdbcType=BIGINT}
+	</delete>
+	<insert id="insert" parameterType="com.df.ssm.entity.UserInfo">
+		insert into USER_INFO (ID, ROLE_ID, NAME,
+		PWD, REAL_NAME, QQ,
+		SEX, BIRTHDATE, CARD_ID, TEL,
+		EMAIL, ADDRESS, CREATE_TIME
+		)
+		values (#{id,jdbcType=BIGINT}, #{roleId,jdbcType=INTEGER},
+		#{name,jdbcType=VARCHAR},
+		#{pwd,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR},
+		#{sex,jdbcType=BIT}, #{birthdate,jdbcType=DATE},
+		#{cardId,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR},
+		#{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+		#{createTime,jdbcType=TIMESTAMP}
+		)
+	</insert>
+	<insert id="insertSelective" parameterType="com.df.ssm.entity.UserInfo">
+		insert into USER_INFO
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				ID,
+			</if>
+			<if test="roleId != null">
+				ROLE_ID,
+			</if>
+			<if test="name != null">
+				NAME,
+			</if>
+			<if test="pwd != null">
+				PWD,
+			</if>
+			<if test="realName != null">
+				REAL_NAME,
+			</if>
+			<if test="qq != null">
+				QQ,
+			</if>
+			<if test="sex != null">
+				SEX,
+			</if>
+			<if test="birthdate != null">
+				BIRTHDATE,
+			</if>
+			<if test="cardId != null">
+				CARD_ID,
+			</if>
+			<if test="tel != null">
+				TEL,
+			</if>
+			<if test="email != null">
+				EMAIL,
+			</if>
+			<if test="address != null">
+				ADDRESS,
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=BIGINT},
+			</if>
+			<if test="roleId != null">
+				#{roleId,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="pwd != null">
+				#{pwd,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				#{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				#{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				#{sex,jdbcType=BIT},
+			</if>
+			<if test="birthdate != null">
+				#{birthdate,jdbcType=DATE},
+			</if>
+			<if test="cardId != null">
+				#{cardId,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				#{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				#{email,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				#{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.df.ssm.entity.UserInfo">
+		update USER_INFO
+		<set>
+			<if test="roleId != null">
+				ROLE_ID = #{roleId,jdbcType=INTEGER},
+			</if>
+			<if test="name != null">
+				NAME = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="pwd != null">
+				PWD = #{pwd,jdbcType=VARCHAR},
+			</if>
+			<if test="realName != null">
+				REAL_NAME = #{realName,jdbcType=VARCHAR},
+			</if>
+			<if test="qq != null">
+				QQ = #{qq,jdbcType=VARCHAR},
+			</if>
+			<if test="sex != null">
+				SEX = #{sex,jdbcType=BIT},
+			</if>
+			<if test="birthdate != null">
+				BIRTHDATE = #{birthdate,jdbcType=DATE},
+			</if>
+			<if test="cardId != null">
+				CARD_ID = #{cardId,jdbcType=VARCHAR},
+			</if>
+			<if test="tel != null">
+				TEL = #{tel,jdbcType=VARCHAR},
+			</if>
+			<if test="email != null">
+				EMAIL = #{email,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				ADDRESS = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="createTime != null">
+				CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+			</if>
+		</set>
+		where ID = #{id,jdbcType=BIGINT}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.df.ssm.entity.UserInfo">
+		update USER_INFO
+		set ROLE_ID = #{roleId,jdbcType=INTEGER},
+		NAME = #{name,jdbcType=VARCHAR},
+		PWD = #{pwd,jdbcType=VARCHAR},
+		REAL_NAME = #{realName,jdbcType=VARCHAR},
+		QQ = #{qq,jdbcType=VARCHAR},
+		SEX = #{sex,jdbcType=BIT},
+		BIRTHDATE = #{birthdate,jdbcType=DATE},
+		CARD_ID = #{cardId,jdbcType=VARCHAR},
+		TEL = #{tel,jdbcType=VARCHAR},
+		EMAIL = #{email,jdbcType=VARCHAR},
+		ADDRESS = #{address,jdbcType=VARCHAR},
+		CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+		where ID = #{id,jdbcType=BIGINT}
+	</update>
+
+
+
+	<select id="get" resultMap="BaseResultMap1">
+		select
+		USER_INFO.*,ROLE_INFO.ROLE_NAME
+		from USER_INFO
+		inner join ROLE_INFO
+		on
+		USER_INFO.ID=#{id} and USER_INFO.ROLE_ID=ROLE_INFO.ROLE_ID
+	</select>
+	
+	<select id="select" resultMap="BaseResultMap">
+		select * from USER_INFO
+		<where>
+			<if test="roleId!=null">
+				and ROLE_ID=#{roleId}
+			</if>
+			<if test="key!=null and key!=''">
+				AND (
+				NAME LIKE CONCAT('%',#{key},'%')
+				OR REAL_NAME LIKE CONCAT('%',#{key},'%')
+				)
+			</if>
+		</where>
+		order by ID desc
+	</select>
+	
+	<select id="page" resultType="com.df.ssm.entity.UserInfo">
+		select * from USER_INFO
+		<where>
+			<if test="roleId!=null">
+				and ROLE_ID=#{roleId}
+			</if>
+			<if test="key!=null and key!=''">
+				AND (
+				NAME LIKE CONCAT('%',#{key},'%')
+				OR REAL_NAME LIKE CONCAT('%',#{key},'%')
+				)
+			</if>
+		</where>
+		order by ID desc
+	</select>
+	<select id="getUserVO" resultType="com.df.ssm.vo.UserInfoVO">
+		select USER_INFO.*,ROLE_INFO.ROLE_NAME
+		from USER_INFO
+		inner join ROLE_INFO
+		on USER_INFO.ID=#{id} and USER_INFO.ROLE_ID=ROLE_INFO.ROLE_ID
+	</select>
+</mapper>
